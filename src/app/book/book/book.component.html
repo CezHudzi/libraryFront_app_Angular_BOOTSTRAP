@@ -1,0 +1,30 @@
+<h1>HELLO hkjgkdsad</h1>
+
+
+<div>
+
+<table>
+
+  <tr>
+  <th>ID</th>
+  <th>TITLE</th>
+  <th>AUTHORS</th>
+
+  </tr>
+
+  <tr *ngFor = "let book of books">
+    <td>{{book.bookId}}</td>
+    <td>{{book.bookName}}</td>
+   <td>
+    <div *ngFor = "let autor of book.autorList">
+        {{autor.valueOf()}}
+    </div>
+    </td>
+
+  </tr>
+
+</table>
+
+
+
+</div>
