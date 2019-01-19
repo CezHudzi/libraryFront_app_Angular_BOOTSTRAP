@@ -1,4 +1,19 @@
-<h1>HELLO hkjgkdsad</h1>
+<h1>LIBERARY APP</h1>
+
+
+<div>
+  <form>
+    Enter Title: <input type = "text" [(ngModel)] = bookNameForm name = "bookName"/><br/>
+    Enter Autors: <input type = "text" [(ngModel)] = bookAuthForm name = "author[]"/><br/>
+    <button (click)="addBook()">Add Book</button>
+  </form>
+</div>
+
+
+
+
+
+
 
 
 <div>
@@ -20,6 +35,11 @@
         {{autor.valueOf()}}
     </div>
     </td>
+
+
+
+
+
 
   </tr>
 

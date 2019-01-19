@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Book} from './book';
+import {BookPost} from './bookPost';
 import {BookService} from '../book.service';
 
 
@@ -12,6 +13,11 @@ export class BookComponent implements OnInit {
 
 
   books: Book[];
+  book = new Book;
+  bookPost = new BookPost();
+  bookNameForm: string;
+  bookAuthForm: string;
+
 
   constructor(private _bookService: BookService) {
   }
@@ -27,6 +33,24 @@ export class BookComponent implements OnInit {
       }, (error) => {
         console.log(error + 'IN BOOK ADD');
       });
+  }
+
+  addBook(): void {
+
+    console.log('ttt');
+    console.log(this.bookNameForm);
+    console.log( this.bookAuthForm);
+    this.bookPost.bookName = this.bookNameForm;
+    this.bookPost.author = this.bookAuthForm.split(',').map(function (item) {
+      return parseInt(item, 10);
+    });
+
+
+    this._bookService.addBook(this.bookPost).subscribe((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
   }
 
 
