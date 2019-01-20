@@ -31,7 +31,7 @@ export class BookComponent implements OnInit {
       .subscribe((bookData) => {
         this.books = bookData, console.log(bookData);
       }, (error) => {
-        console.log(error + 'IN BOOK ADD');
+        console.log(error + 'IN BOOK GET');
       });
   }
 
@@ -39,7 +39,7 @@ export class BookComponent implements OnInit {
 
     console.log('ttt');
     console.log(this.bookNameForm);
-    console.log( this.bookAuthForm);
+    console.log(this.bookAuthForm);
     this.bookPost.bookName = this.bookNameForm;
     this.bookPost.author = this.bookAuthForm.split(',').map(function (item) {
       return parseInt(item, 10);
@@ -48,9 +48,17 @@ export class BookComponent implements OnInit {
 
     this._bookService.addBook(this.bookPost).subscribe((response) => {
       console.log(response);
+      this.reset();
     }, (error) => {
       console.log(error);
     });
+  }
+
+
+  private reset() {
+    this.bookNameForm = null;
+    this.bookAuthForm = null;
+    this.getBooks();
   }
 
 

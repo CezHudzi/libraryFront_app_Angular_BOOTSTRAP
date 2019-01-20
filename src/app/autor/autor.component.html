@@ -1,0 +1,36 @@
+<div style="text-align: center;">
+  <h1>ADD AUTHORS</h1>
+  <div>
+    <form>
+      Enter First Name: <input type = "text" [(ngModel)] = autorFirstName name = "autorFirstName"/><br/>
+      Enter Last Name: <input type = "text" [(ngModel)] = autorSecondName name = "autorSecondName"/><br/>
+      <button (click)="addAuthor()">Add Author</button>
+    </form>
+  </div>
+
+
+
+
+
+<div>
+
+  <table align="center">
+
+    <tr>
+      <th>ID</th>
+      <th>FIRST NAME</th>
+      <th>LAST NAME</th>
+
+    </tr>
+
+    <tr *ngFor = "let autor of autors">
+      <td>{{autor.autorId}}</td>
+      <td>{{autor.firstName}}</td>
+      <td>{{autor.lastName}}
+      </td>
+
+    </tr>
+
+  </table>
+</div>
+</div>

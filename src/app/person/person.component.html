@@ -1,0 +1,33 @@
+<div style="text-align: center;">
+  <h1>ADD USER</h1>
+  <div>
+    <form>
+      Enter First Name:  <input type = "text" [(ngModel)] = personFirstName name = "personFirstName"/><br/>
+      Enter Last Name: <input type = "text" [(ngModel)] = personLastName name = "personLastName"/><br/>
+      <button (click)="addPerson()">Add Person</button>
+    </form>
+  </div>
+
+  <div>
+
+    <table align="center">
+
+      <tr>
+        <th>ID</th>
+        <th>First NAME</th>
+        <th>LAST NAME</th>
+
+      </tr>
+
+      <tr *ngFor="let person of persons">
+        <td>{{person.idUser}}</td>
+        <td>{{person.firstName}}</td>
+        <td>
+          {{person.lastName}}
+        </td>
+
+      </tr>
+
+    </table>
+  </div>
+</div>
