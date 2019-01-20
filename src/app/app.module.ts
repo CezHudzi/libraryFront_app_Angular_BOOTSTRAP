@@ -11,13 +11,15 @@ import { AutorComponent } from './autor/autor.component';
 import {AuthorService} from './autor/autor.service';
 import { PersonComponent } from './person/person.component';
 import {PersonService} from './person/person.service';
+import { BorrowComponent } from './borrow/borrow.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
     AutorComponent,
-    PersonComponent
+    PersonComponent,
+    BorrowComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,7 @@ import {PersonService} from './person/person.service';
     HttpModule,
     FormsModule
   ],
-  providers: [BookService, AuthorService, PersonService],
+  providers: [BookService, AuthorService, PersonService, BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

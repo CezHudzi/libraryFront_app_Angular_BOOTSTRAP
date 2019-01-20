@@ -34,10 +34,10 @@ export class BookComponent implements OnInit {
         console.log(error + 'IN BOOK GET');
       });
   }
-
+l
   addBook(): void {
 
-    console.log('ttt');
+
     console.log(this.bookNameForm);
     console.log(this.bookAuthForm);
     this.bookPost.bookName = this.bookNameForm;

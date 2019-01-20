@@ -1,0 +1,48 @@
+
+
+<div style="text-align: center;">
+  <h1>ADD BORROW</h1>
+
+
+  <div>
+    <form>
+      Enter Person ID:  <input type = "text" [(ngModel)] = borrowBookId name = "borrowPeopleId"/><br/>
+      Enter Book ID: <input type = "text" [(ngModel)] =  borrowPeopleId name = "borrowBookId"/><br/>
+      <button (click)="addBorrow()">RENT BOOK</button>
+    </form>
+  </div>
+
+
+
+
+
+
+  <div>
+
+    <table align="center">
+
+      <tr>
+
+        <th>FIRST NAME</th>
+        <th>LAST NAME</th>
+        <th>BOOK NAME</th>
+        <th>FINE</th>
+        <th>FINE IN EURO</th>
+        <th>BORROWED AT</th>
+        <th>RETURN DATE</th>
+      </tr>
+
+      <tr *ngFor = "let borrow of borrows">
+
+        <td>{{borrow.name}}</td>
+        <td>{{borrow.surname}}</td>
+        <td>{{borrow.bookname}}</td>
+        <td>{{borrow.fine}}</td>
+        <td>{{borrow.fineEuro}}</td>
+        <td>{{borrow.borrowedAt}}</td>
+        <td>{{borrow.returnAt}}</td>
+      </tr>
+
+    </table>
+  </div>
+</div>
