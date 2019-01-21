@@ -99,7 +99,7 @@
           <button class="btn btn-secondary" (click)="removeBarrow(i)">Return Book</button>
         </td>
         <td>
-          <button class="btn btn-secondary" (click)="extendReturnDate(i)">Extend Return Date</button>
+          <button class="btn btn-secondary" [disabled]="borrow.fine!=0" (click)="extendReturnDate(i)">Extend Return Date</button>
         </td>
       </tr>
       </tbody>
