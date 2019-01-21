@@ -12,15 +12,17 @@ import {BookService} from '../book.service';
 export class BookComponent implements OnInit {
 
 
+  constructor(private _bookService: BookService) {
+  }
+
+
   books: Book[];
   book = new Book;
   bookPost = new BookPost();
   bookNameForm: string;
   bookAuthForm: string;
+l;
 
-
-  constructor(private _bookService: BookService) {
-  }
 
   ngOnInit() {
     this.getBooks();
@@ -34,7 +36,6 @@ export class BookComponent implements OnInit {
         console.log(error + 'IN BOOK GET');
       });
   }
-l
   addBook(): void {
 
 
