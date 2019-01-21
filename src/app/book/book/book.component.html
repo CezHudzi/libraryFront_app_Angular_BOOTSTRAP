@@ -4,7 +4,7 @@
 
   <form (ngSubmit)="onFormSubmit(movieForm)" #movieForm="ngForm">
     <div class="row" style="width: 40%;">
-      <div style="margin-left:25%;" class="form-group  col">
+      <div style="margin-left:15%;" class="form-group  col">
         <label for="title">Book Tittle</label>
         *<input [(ngModel)]="bookNameForm" required #title="ngModel"
 
@@ -61,7 +61,6 @@
 
 
 
-        <td [ngClass]=" book.avalable ? 'redBG' : 'blackBG'">{{book.avalable}}</td>
         <td [ngClass]=" book.avalable ? 'redBG' : 'blackBG'">{{book.bookId}}</td>
         <td [ngClass]=" book.avalable ? 'redBG' : 'blackBG'">{{book.bookName}}</td>
         <td [ngClass]=" book.avalable ? 'redBG' : 'blackBG'">
