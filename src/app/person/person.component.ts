@@ -54,7 +54,12 @@ export class PersonComponent implements OnInit {
   }
 
 
-
+  onFormSubmit(borrowForm) {
+    // console.log(movieForm);
+    this.addPerson();
+    this.reset();
+    borrowForm.resetForm();
+  }
 
 
 }

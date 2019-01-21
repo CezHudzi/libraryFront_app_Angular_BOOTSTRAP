@@ -14,6 +14,8 @@ export class BorrowComponent implements OnInit {
   borrowPeopleId: number;
   borrowBookId: number;
   private borrow: BorrowPost;
+  private borrowDel: BorrowPost;
+
 
   constructor(private _borrowService: BorrowService) {
   }
@@ -51,6 +53,46 @@ export class BorrowComponent implements OnInit {
     this.borrowBookId = null;
     this.getBorrows();
   }
+
+  removeBarrow(idRemove: number): void {
+
+    console.log(idRemove);
+    console.log(this.borrows[idRemove]);
+    const index = this.borrows[idRemove].idBorrow;
+    this.borrow = new BorrowPost(1, index);
+    this._borrowService.removeBorrow(this.borrow).subscribe((response) => {
+      console.log(response);
+      this.reset();
+    }, (error) => {
+      console.log(error);
+    });
+
+  }
+
+  extendReturnDate(idExtend: number): void {
+
+    console.log(idExtend);
+    console.log(this.borrows[idExtend]);
+    const index = this.borrows[idExtend].idBorrow;
+    this.borrow = new BorrowPost(1, index);
+    this._borrowService.extendRent(this.borrow).subscribe((response) => {
+      console.log(response);
+      this.reset();
+    }, (error) => {
+      console.log(error);
+    });
+
+  }
+
+
+
+  onFormSubmit(borrowForm) {
+    // console.log(movieForm);
+    this.addBorrow();
+    this.reset();
+    borrowForm.resetForm();
+  }
+
 
 }
 

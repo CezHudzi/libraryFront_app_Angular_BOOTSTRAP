@@ -1,7 +1,47 @@
 
 
 <div style="text-align: center;">
-  <h1>ADD BOOK</h1>
+  <h1>BOOKS</h1>
+
+
+
+
+  <form (ngSubmit)="onFormSubmit(movieForm)" #movieForm="ngForm">
+    <div class="row" style="width: 40%;">
+      <div style="margin-left:25%;" class="form-group  col">
+        <label for="title">Book Tittle</label>
+        *<input [(ngModel)]="bookNameForm" required #title="ngModel"
+
+                type="text" id="title" name="title" class="form-control">
+
+
+
+
+      </div>
+
+
+
+      <div class="form-group col">
+        <label for="titleBook">Authors ID</label>
+        *<input [(ngModel)]="bookAuthForm" required #title="ngModel"
+
+                type="text" id="titleBook" name="titleBook" class="form-control">
+
+
+      </div>
+
+      <div>
+
+        <button type="submit" class="btn btn-secondary" style="width: 100%; height: 80%;" [disabled]="!movieForm.valid">Rent Book</button>
+      </div>
+    </div>
+  </form>
+
+
+
+
+
+  <!--
 <div>
   <form>
     Enter    Title:  <input type = "text" [(ngModel)] = bookNameForm name = "bookName"/><br/>
@@ -10,7 +50,7 @@
   </form>
 </div>
 
-
+-->
 
 
 
@@ -19,7 +59,7 @@
 
 <div>
 
-<table align="center">
+<table align="center" id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 
   <tr>
   <th>ID</th>
@@ -36,6 +76,9 @@
         {{autor.valueOf()}}
     </div>
     </td>
+
+
+
 
   </tr>
 

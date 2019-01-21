@@ -1,7 +1,7 @@
 export class BorrowGet {
 
 
-  borrowId: number;
+  idBorrow: number;
   borrowedAt: string;
   returnAt: string;
   fine: number;

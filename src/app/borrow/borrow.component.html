@@ -1,26 +1,78 @@
-
-
 <div style="text-align: center;">
-  <h1>ADD BORROW</h1>
+  <h1> BORROWS</h1>
+  <div class="container"  align="center">
+    <div class="row">
 
+
+  <form (ngSubmit)="onFormSubmit(movieForm)" #movieForm="ngForm">
+    <div class="row" style="width: 25rem;"  >
+      <div class="form-group  col">
+        <label for="title">UserID</label>
+        *<input [(ngModel)]="borrowBookId" required #title="ngModel"
+
+                type="number" id="title" name="title" class="form-control">
+
+
+
+
+      </div>
+
+
+
+      <div class="form-group col">
+        <label for="titleBook">BookID</label>
+        *<input [(ngModel)]="borrowPeopleId" required #title="ngModel"
+
+                type="number" id="titleBook" name="titleBook" class="form-control">
+
+
+      </div>
+
+      <div>
+
+      <button type="submit" class="btn btn-secondary" style="width: 100%; height: 80%;" [disabled]="!movieForm.valid">Rent Book</button>
+      </div>
+    </div>
+  </form>
+
+
+
+    </div>
+  </div>
+<!--
+      <div class="form-group">
+        <label for="title">Tytuł</label>
+        *<input  [(ngModel)]="borrowBookId" required #title="ngModel"
+                minlength="2"
+                type="text" id="title" name="title" class="form-control">
+        <div *ngIf="title.dirty && title.errors?.required"> Pole wymagane </div>
+
+      </div>
+-->
+
+
+
+
+
+
+
+
+<!--
 
   <div>
     <form>
-      Enter Person ID:  <input type = "text" [(ngModel)] = borrowBookId name = "borrowPeopleId"/><br/>
-      Enter Book ID: <input type = "text" [(ngModel)] =  borrowPeopleId name = "borrowBookId"/><br/>
+      Enter Person ID: <input type="text" [(ngModel)]=borrowBookId name="borrowPeopleId"/><br/>
+      Enter Book ID: <input type="text" [(ngModel)]=borrowPeopleId name="borrowBookId"/><br/>
       <button (click)="addBorrow()">RENT BOOK</button>
     </form>
   </div>
-
-
-
-
-
+-->
 
   <div>
 
-    <table align="center">
-
+    <table align="center" id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+           width="100%">
+      <thead>
       <tr>
 
         <th>FIRST NAME</th>
@@ -31,18 +83,26 @@
         <th>BORROWED AT</th>
         <th>RETURN DATE</th>
       </tr>
+      </thead>
 
-      <tr *ngFor = "let borrow of borrows">
-
+      <tbody>
+      <tr *ngFor="let borrow of borrows; let i = index">
+        <td>{{borrow.idBorrow}}</td>
         <td>{{borrow.name}}</td>
         <td>{{borrow.surname}}</td>
         <td>{{borrow.bookname}}</td>
-        <td>{{borrow.fine}}</td>
-        <td>{{borrow.fineEuro}}</td>
+        <td>{{borrow.fine}}zł</td>
+        <td>{{borrow.fineEuro}}&euro;</td>
         <td>{{borrow.borrowedAt}}</td>
         <td>{{borrow.returnAt}}</td>
+        <td>
+          <button class="btn btn-secondary" (click)="removeBarrow(i)">Return Book</button>
+        </td>
+        <td>
+          <button class="btn btn-secondary" (click)="extendReturnDate(i)">Extend Return Date</button>
+        </td>
       </tr>
-
+      </tbody>
     </table>
   </div>
 </div>

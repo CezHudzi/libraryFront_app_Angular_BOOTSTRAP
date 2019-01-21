@@ -62,4 +62,13 @@ l
   }
 
 
+  onFormSubmit(borrowForm) {
+    // console.log(movieForm);
+    this.addBook();
+    this.reset();
+    borrowForm.resetForm();
+  }
+
+
+
 }

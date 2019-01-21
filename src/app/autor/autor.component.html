@@ -1,36 +1,85 @@
 <div style="text-align: center;">
-  <h1>ADD AUTHORS</h1>
+<h1>AUTHORS</h1>
+
+  <form (ngSubmit)="onFormSubmit(movieForm)" #movieForm="ngForm">
+    <div class="row" style="width: 50%;">
+      <div class="form-group  col" style="margin-left:20px;">
+        <label for="title">First Name</label>
+        *<input [(ngModel)]="autorFirstName" required #title="ngModel"
+
+                type="text" id="title" name="title" class="form-control">
+
+
+
+
+      </div>
+
+
+
+      <div class="form-group col" >
+        <label for="titleBook">Last Name</label>
+        *<input [(ngModel)]="autorSecondName" required #title="ngModel"
+
+                type="text" id="titleBook" name="titleBook" class="form-control">
+
+
+      </div>
+
+      <div>
+
+        <button type="submit" class="btn btn-secondary" style="width: 100%; height: 80%;" [disabled]="!movieForm.valid">Add Author</button>
+      </div>
+    </div>
+  </form>
+
+
+  <!--
+      <button id="submit" type="button"  (click)="addAuthor()" ng-disabled="myForm.$invalid" class="btn btn-secondary">Add Author</button>
+
+
+
   <div>
     <form>
-      Enter First Name: <input type = "text" [(ngModel)] = autorFirstName name = "autorFirstName"/><br/>
-      Enter Last Name: <input type = "text" [(ngModel)] = autorSecondName name = "autorSecondName"/><br/>
+      <div class="row">
+        <div class="col">
+      Enter First Name: <input type="text" [(ngModel)]=autorFirstName name="autorFirstName"/><br/>
+      </div>
+        <div class="col">
+      Enter Last Name: <input type="text" [(ngModel)]=autorSecondName name="autorSecondName"/><br/>
+      </div>
+        <div class="col">
       <button (click)="addAuthor()">Add Author</button>
+      </div>
+
+      </div>
     </form>
   </div>
+-->
 
 
+  <div>
 
+    <table align="center" id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+           width="100%">
 
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>FIRST NAME</th>
+        <th>LAST NAME</th>
 
-<div>
+      </tr>
+      </thead>
+      <tbody>
 
-  <table align="center">
+      <tr *ngFor="let autor of autors">
+        <td>{{autor.autorId}}</td>
+        <td>{{autor.firstName}}</td>
+        <td>{{autor.lastName}}
+        </td>
 
-    <tr>
-      <th>ID</th>
-      <th>FIRST NAME</th>
-      <th>LAST NAME</th>
-
-    </tr>
-
-    <tr *ngFor = "let autor of autors">
-      <td>{{autor.autorId}}</td>
-      <td>{{autor.firstName}}</td>
-      <td>{{autor.lastName}}
-      </td>
-
-    </tr>
-
-  </table>
-</div>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

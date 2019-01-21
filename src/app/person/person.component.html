@@ -1,5 +1,38 @@
 <div style="text-align: center;">
-  <h1>ADD USER</h1>
+  <h1>USERS</h1>
+
+  <form (ngSubmit)="onFormSubmit(movieForm)" #movieForm="ngForm">
+    <div class="row" style="width: 50%;">
+      <div class="form-group  col" style="margin-left:20px;">
+        <label for="title">First Name</label>
+        *<input [(ngModel)]="personFirstName" required #title="ngModel"
+
+                type="text" id="title" name="title" class="form-control">
+
+
+
+
+      </div>
+
+
+
+      <div class="form-group col" >
+        <label for="titleBook">Last Name</label>
+        *<input [(ngModel)]="personLastName" required #title="ngModel"
+
+                type="text" id="titleBook" name="titleBook" class="form-control">
+
+
+      </div>
+
+      <div>
+
+        <button type="submit" class="btn btn-secondary" style="width: 100%; height: 80%;" [disabled]="!movieForm.valid">Add User</button>
+      </div>
+    </div>
+  </form>
+
+  <!--
   <div>
     <form>
       Enter First Name:  <input type = "text" [(ngModel)] = personFirstName name = "personFirstName"/><br/>
@@ -7,18 +40,28 @@
       <button (click)="addPerson()">Add Person</button>
     </form>
   </div>
+-->
+
+
+
+
+
+
 
   <div>
 
-    <table align="center">
+    <table align="center" id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 
+      <thead>
       <tr>
         <th>ID</th>
         <th>First NAME</th>
         <th>LAST NAME</th>
 
       </tr>
+      </thead>
 
+      <tbody>
       <tr *ngFor="let person of persons">
         <td>{{person.idUser}}</td>
         <td>{{person.firstName}}</td>
@@ -27,7 +70,7 @@
         </td>
 
       </tr>
-
+      </tbody>
     </table>
   </div>
 </div>

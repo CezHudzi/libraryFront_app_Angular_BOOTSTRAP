@@ -53,4 +53,13 @@ export class AutorComponent implements OnInit {
   }
 
 
+
+  onFormSubmit(borrowForm) {
+    // console.log(movieForm);
+    this.addAuthor();
+    this.reset();
+    borrowForm.resetForm();
+  }
+
+
 }
