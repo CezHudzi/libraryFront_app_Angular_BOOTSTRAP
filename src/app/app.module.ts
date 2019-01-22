@@ -12,6 +12,7 @@ import {AuthorService} from './autor/autor.service';
 import { PersonComponent } from './person/person.component';
 import {PersonService} from './person/person.service';
 import { BorrowComponent } from './borrow/borrow.component';
+import {FilterPipePipe} from './book/book/filter-pipe.pipe';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { BorrowComponent } from './borrow/borrow.component';
     BookComponent,
     AutorComponent,
     PersonComponent,
-    BorrowComponent
+    BorrowComponent,
+    FilterPipePipe
   ],
   imports: [
     BrowserModule,

@@ -21,7 +21,7 @@ export class BookComponent implements OnInit {
   bookPost = new BookPost();
   bookNameForm: string;
   bookAuthForm: string;
-l;
+  searchForm: string;
 
 
   ngOnInit() {
