@@ -15,8 +15,10 @@ export class AuthorService {
   constructor(private _httpService: Http) {
   }
 
-  getAllAuthors(): Observable<AutorGet[]> {
-    return this._httpService.get('http://localhost:8080/autors').map((response: Response) => response.json())
+
+  getAllAuthors(login: string, password: string): Observable<AutorGet[]> {
+    const headers = new Headers({'Authorization': 'Basic  ' + btoa(login + ':' + password)});
+    return this._httpService.get('http://localhost:8080/autors', {headers}).map((response: Response) => response.json())
       .catch(this.handleError);
 
   }
@@ -26,10 +28,12 @@ export class AuthorService {
   }
 
 
-  addAutor(autorPost: AutorPost) {
+  addAutor(autorPost: AutorPost, login: string, password: string) {
     console.log(JSON.stringify(autorPost));
     const body = JSON.stringify(autorPost);
-    const headers = new Headers({'Content-Type': 'application/json'});
+
+    const headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + btoa(login + ':' + password)});
+
     const options = new RequestOptions({headers: headers});
     return this._httpService.post('http://localhost:8080/autors', body, options);
   }

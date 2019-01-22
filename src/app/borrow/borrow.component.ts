@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {BorrowService} from './borrow.service';
 import {BorrowGet} from './borrowGet';
 import {BorrowPost} from './bookPost';
@@ -9,6 +9,10 @@ import {BorrowPost} from './bookPost';
   styleUrls: ['./borrow.component.css']
 })
 export class BorrowComponent implements OnInit {
+
+  @Input() login;
+  @Input() password;
+
 
   borrows: BorrowGet[];
   borrowPeopleId: number;
@@ -26,7 +30,7 @@ export class BorrowComponent implements OnInit {
 
 
   getBorrows(): void {
-    this._borrowService.getAllBrrows().subscribe((borrowData) => {
+    this._borrowService.getAllBrrows(this.login, this.password).subscribe((borrowData) => {
       // @ts-ignore
       this.borrows = borrowData;
       console.log(borrowData);
@@ -38,7 +42,7 @@ export class BorrowComponent implements OnInit {
   addBorrow(): void {
 
     this.borrow = new BorrowPost(this.borrowPeopleId, this.borrowBookId);
-    this._borrowService.addBorrow(this.borrow).subscribe((response) => {
+    this._borrowService.addBorrow(this.borrow,  this.login, this.password).subscribe((response) => {
       console.log(response);
       this.reset();
     }, (error) => {
@@ -60,7 +64,7 @@ export class BorrowComponent implements OnInit {
     console.log(this.borrows[idRemove]);
     const index = this.borrows[idRemove].idBorrow;
     this.borrow = new BorrowPost(1, index);
-    this._borrowService.removeBorrow(this.borrow).subscribe((response) => {
+    this._borrowService.removeBorrow(this.borrow,  this.login, this.password).subscribe((response) => {
       console.log(response);
       this.reset();
     }, (error) => {
@@ -75,7 +79,7 @@ export class BorrowComponent implements OnInit {
     console.log(this.borrows[idExtend]);
     const index = this.borrows[idExtend].idBorrow;
     this.borrow = new BorrowPost(1, index);
-    this._borrowService.extendRent(this.borrow).subscribe((response) => {
+    this._borrowService.extendRent(this.borrow,  this.login, this.password).subscribe((response) => {
       console.log(response);
       this.reset();
     }, (error) => {
@@ -83,7 +87,6 @@ export class BorrowComponent implements OnInit {
     });
 
   }
-
 
 
   onFormSubmit(borrowForm) {

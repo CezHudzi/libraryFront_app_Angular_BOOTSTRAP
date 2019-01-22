@@ -1,0 +1,45 @@
+
+
+
+
+<div class="container"  *ngIf="logged==true"  style="width: 100%;">
+
+  <div>
+    <button (click)="logout()" class="btn btn-secondary" style="width: 20%; height: 80%; background-color: #A0A6AB" >Log Out</button>
+  </div>
+
+
+
+</div>
+
+
+
+
+<div class="container"  align="center" *ngIf="logged==false" >
+    <form (ngSubmit)="onFormSubmit2(movieForm2)" #movieForm2="ngForm" align="center" class="form-inline">
+        <div class="form-group  ">
+          <label for="title"></label>
+          <input [(ngModel)]="login" required #title="ngModel"
+
+                  type="string" id="title" name="title" class="form-control"  placeholder="Login" >
+        </div>
+
+        <div class="form-group">
+          <label for="titleBook"></label>
+          <input [(ngModel)]= "passwordUser" required #title="ngModel"
+
+                  type="password" id="titleBook" name="titleBook" class="form-control"  placeholder="Password" >
+
+        </div>
+
+
+
+
+
+        <div>
+          <button type="submit" class="btn btn-secondary" style="width: 100%; height: 80%;" [disabled]="!movieForm2.valid">Login</button>
+        </div>
+
+    </form>
+  </div>
+

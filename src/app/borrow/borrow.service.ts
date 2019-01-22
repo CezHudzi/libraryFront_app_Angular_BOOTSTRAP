@@ -12,8 +12,9 @@ export class BorrowService {
   constructor(private _httpService: Http) {
   }
 
-  getAllBrrows(): Observable<BorrowGet> {
-    return this._httpService.get('http://localhost:8080/borrows').map((response: Response) => response.json())
+  getAllBrrows( login: string, password: string): Observable<BorrowGet> {
+    const headers = new Headers({'Authorization': 'Basic  ' + btoa(login + ':' + password)});
+    return this._httpService.get('http://localhost:8080/borrows', {headers}).map((response: Response) => response.json())
       .catch(this.handleError);
   }
 
@@ -22,11 +23,11 @@ export class BorrowService {
   }
 
 
-  addBorrow(borrowPost: BorrowPost) {
+  addBorrow(borrowPost: BorrowPost, login: string, password: string) {
 
     console.log(JSON.stringify(borrowPost));
     const body = JSON.stringify(borrowPost);
-    const headers = new Headers({'Content-Type': 'application/json'});
+    const headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + btoa(login + ':' + password)});
     const options = new RequestOptions({headers: headers});
 
 
@@ -34,11 +35,11 @@ export class BorrowService {
   }
 
 
-  removeBorrow(borrowPost: BorrowPost) {
+  removeBorrow(borrowPost: BorrowPost, login: string, password: string) {
 
     console.log(JSON.stringify(borrowPost));
     const body = JSON.stringify(borrowPost);
-    const headers = new Headers({'Content-Type': 'application/json'});
+    const headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + btoa(login + ':' + password)});
     const options = new RequestOptions({headers: headers});
 
 
@@ -50,11 +51,11 @@ export class BorrowService {
 
 
 
-  extendRent(borrowPost: BorrowPost) {
+  extendRent(borrowPost: BorrowPost, login: string, password: string) {
 
     console.log(JSON.stringify(borrowPost));
     const body = JSON.stringify(borrowPost);
-    const headers = new Headers({'Content-Type': 'application/json'});
+    const headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + btoa(login + ':' + password)});
     const options = new RequestOptions({headers: headers});
 
 

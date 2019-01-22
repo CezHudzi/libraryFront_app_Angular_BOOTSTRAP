@@ -1,18 +1,63 @@
 
-<nav>
-  <a routerLink="/home"> &nbsp;&nbsp; Home &nbsp; </a> |
-  <a routerLink="/books">&nbsp; Books &nbsp; </a> |
-  <a routerLink="/authors">&nbsp; Authors &nbsp; </a> |
-  <a routerLink="/users">&nbsp; Users&nbsp; </a> |
-  <a routerLink="/borrows">&nbsp; Borrows&nbsp; </a>
-</nav>
+
+  <div class="col">
 
 
-<!---
-<app-borrow></app-borrow>
-<app-person></app-person>
-<app-autor></app-autor>
-  <app-book></app-book>
---->
+    <div class="btn-group  btn-group-lg" role="group" aria-label="Basic example">
 
-<router-outlet></router-outlet>
+      <button (click)="setMenu(0)" class="btn btn-secondary" style="width: 100%; height: 80%;">
+        {{login}}&nbsp;&nbsp;&nbsp;&nbsp;
+      </button>
+
+
+      <button (click)="setMenu(1)" class="btn btn-secondary" style="width: 100%; height: 80%;">
+        Books
+      </button>
+
+      <button (click)="setMenu(2)" class="btn btn-secondary" style="width: 100%; height: 80%;">
+        Autors
+      </button>
+      <button (click)="setMenu(3)" class="btn btn-secondary" style="width: 100%; height: 80%;">
+        Users
+      </button>
+      <button (click)="setMenu(4)" class="btn btn-secondary" style="width: 100%; height: 80%;">
+        Rent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </button>
+    </div>
+
+
+
+
+    <app-book [login]="login" [password]="password" *ngIf="menu==1"></app-book>
+    <app-autor [login]="login" [password]="password" *ngIf="menu==2"></app-autor>
+    <app-person [login]="login" [password]="password" *ngIf="menu==3"></app-person>
+    <app-borrow [login]="login" [password]="password" *ngIf="menu==4"></app-borrow>
+
+
+  </div>
+
+
+  <app-login-form [logged]="logged" *ngIf="menu==0" (outPutToParentLogin)="receiveLogin($event)"
+                  (outPutToParentPassword)="receivePass($event)"></app-login-form>
+
+
+  <!--
+    <nav>
+      <a routerLink="/books">&nbsp; Books &nbsp; </a> |
+      <a routerLink="/authors">&nbsp; Authors &nbsp; </a> |
+      <a routerLink="/users">&nbsp; Users&nbsp; </a> |
+      <a routerLink="/borrows">&nbsp; Borrows&nbsp; </a>
+    </nav>
+    <router-outlet></router-outlet>
+    -->
+
+    <!---
+    <app-borrow></app-borrow>
+    <app-person></app-person>
+    <app-autor></app-autor>
+      <app-book></app-book>
+    --->
+
+
+
+

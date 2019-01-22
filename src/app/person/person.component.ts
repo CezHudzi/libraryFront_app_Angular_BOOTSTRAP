@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {PersonService} from './person.service';
 import {PersonGet} from './personGet';
 import {PersonPost} from './personPost';
@@ -9,6 +9,10 @@ import {PersonPost} from './personPost';
   styleUrls: ['./person.component.css']
 })
 export class PersonComponent implements OnInit {
+
+  @Input() login;
+  @Input() password;
+
 
   persons: PersonGet[];
   personFirstName: string;
@@ -26,7 +30,7 @@ export class PersonComponent implements OnInit {
 
   getPersons(): void {
 
-    this._personService.getAllPersons().subscribe((bookData) => {
+    this._personService.getAllPersons(this.login, this.password).subscribe((bookData) => {
       this.persons = bookData, console.log(bookData);
     }, (error) => {
       console.log(error + 'IN BOOK GET');
@@ -39,7 +43,7 @@ export class PersonComponent implements OnInit {
     console.log(this.personLastName);
     this.personPost = new PersonPost(this.personFirstName, this.personLastName);
 
-    this._personService.addPerson(this.personPost).subscribe((response) => {
+    this._personService.addPerson(this.personPost, this.login, this.password).subscribe((response) => {
       console.log(response);
       this.reset();
     }, (error) => {

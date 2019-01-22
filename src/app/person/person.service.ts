@@ -14,8 +14,9 @@ export class PersonService {
   constructor(private _httpService: Http) {
   }
 
-  getAllPersons(): Observable<PersonGet[]> {
-    return this._httpService.get('http://localhost:8080/persons').map((response: Response) => response.json())
+  getAllPersons(login: string, password: string): Observable<PersonGet[]> {
+    const headers = new Headers({'Authorization': 'Basic  ' + btoa(login + ':' + password)});
+    return this._httpService.get('http://localhost:8080/persons', {headers}).map((response: Response) => response.json())
       .catch(this.handleError);
   }
 
@@ -25,11 +26,11 @@ export class PersonService {
   }
 
 
-  addPerson(personPost: PersonPost) {
+  addPerson(personPost: PersonPost, login: string, password: string) {
 
     console.log(JSON.stringify(personPost));
     const body = JSON.stringify(personPost);
-    const headers = new Headers({'Content-Type': 'application/json'});
+    const headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + btoa(login + ':' + password)});
     const options = new RequestOptions({headers: headers});
 
 
