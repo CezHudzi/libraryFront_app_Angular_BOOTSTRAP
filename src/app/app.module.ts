@@ -18,7 +18,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {LoginFormComponent} from './login-form/login-form.component';
 
 
-import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -42,7 +41,7 @@ import { MainComponent } from './main/main.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [BookService, AuthorService, PersonService, BookService],
+  providers: [BookService, AuthorService, PersonService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
